@@ -63,3 +63,28 @@ void dfs_directed(){
     }
 }
 
+
+// 그냥 2차원 배열에서의 DFS
+// 이동할 방향을 지정하고 각 좌표별로 DFS를 진행하며 조건을 확인한다.
+int n;
+int arr[100][100];
+bool vis[100][100];
+int dx[] = {-1, 1, 0, 0};
+int dy[] = {0, 0, -1, 1};
+
+void dfs(int x, int y) {
+    // 현재 위치 방문
+    vis[x][y] = true;
+    cout << "(" << x << ", " << y << ") 방문" << endl; // 출력 등 로직
+
+    // 네 방향으로 이동
+    for (int i = 0; i < 4; i++) {
+        int nx = x + dx[i];
+        int ny = y + dy[i];
+
+        // 배열 범위 체크 및 미방문, 유효한 이동 조건 체크
+        if (nx >= 0 && nx < n && ny >= 0 && ny < n && !vis[nx][ny] && arr[nx][ny] == 1) {
+            dfs(nx, ny);
+        }
+    }
+}

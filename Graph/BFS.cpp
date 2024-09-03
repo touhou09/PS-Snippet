@@ -107,3 +107,39 @@ void bfs_undirected(){
         }
     }
 }
+
+// 그냥 2차원 배열에서의 BFS
+// 이동할 방향을 지정하고 각 좌표별로 BFS 를 진행하며 조건을 확인한다.
+int n;
+int arr[100][100];
+bool vis[100][100];
+int dx[] = {-1, 1, 0, 0};
+int dy[] = {0, 0, -1, 1};
+
+void bfs(int startX, int startY) {
+    queue<pair<int, int>> q;
+    
+    // 시작 위치 방문 및 큐에 삽입
+    vis[startX][startY] = true;
+    q.push({startX, startY});
+    
+    while (!q.empty()) {
+        int x = q.front().first;
+        int y = q.front().second;
+        q.pop();
+        
+        cout << "(" << x << ", " << y << ") 방문" << endl; // 출력 및 외부를 향한 로직 체크
+
+        // 네 방향으로 이동
+        for (int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+
+            // 배열 범위 체크 및 미방문, 유효한 이동 조건 체크
+            if (nx >= 0 && nx < n && ny >= 0 && ny < n && !vis[nx][ny] && arr[nx][ny] == 1) {
+                vis[nx][ny] = true;
+                q.push({nx, ny});
+            }
+        }
+    }
+}
