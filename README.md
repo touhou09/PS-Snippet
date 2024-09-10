@@ -25,3 +25,8 @@ ps에서 사용하는 주요 알고리즘 스니펫을 정리
 ## Topological Sorting
 ### 기본 형태
 ### 특수 형태
+
+## MST
+### Union Find
+### Kruscal
+### Prim
